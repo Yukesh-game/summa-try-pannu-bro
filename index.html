@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Code</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>This is hosted on GitHub Pages.</p>
+  <div class="container">
+    <h1>Enter the secret code</h1>
+    <input type="text" id="userInput" placeholder="Enter 'apple'">
+    <button onclick="checkCode()">Submit</button>
+    <p id="message"></p>
+    <button id="restartButton" onclick="restartGame()" style="display:none;">Try Again</button>
+    <audio id="correctSound" src="correct-sound.mp3" preload="auto"></audio>
+    <audio id="incorrectSound" src="incorrect-sound.mp3" preload="auto"></audio>
+
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
