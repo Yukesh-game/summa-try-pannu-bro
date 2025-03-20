@@ -1,24 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secret Code</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+// Firebase Configuration (Replace with your Firebase config)
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+};
 
-<body>
-  <div class="container">
-    <h1>Enter the secret code</h1>
-    <input type="text" id="userInput" placeholder="Enter 'apple'">
-    <button onclick="checkCode()">Submit</button>
-    <p id="message"></p>
-    <button id="restartButton" onclick="restartGame()" style="display:none;">Try Again</button>
-    <audio id="correctSound" src="correct-sound.mp3" preload="auto"></audio>
-    <audio id="incorrectSound" src="incorrect-sound.mp3" preload="auto"></audio>
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-  </div>
-  <script src="script.js"></script>
-</body>
-
-</html>
+// Google Login
+function googleLogin() {
+    let provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+        .then(result => {
+            let user = result.user;
+            document.getElementById("user-info").innerHTML = 
+                "Logged in as: " + user.email;
+        })
+        .catch(error => console.log(error.message));
+}
